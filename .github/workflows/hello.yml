@@ -1,7 +1,9 @@
+# GOAL: Print Greet message and print date, github branch name, files, OS of runner.
+
 name: Hello GitHub Actions
 
 on:
-  push: 
+  pull_request:  
 
 jobs:
   greet:
@@ -21,9 +23,6 @@ jobs:
 
       - name: List files
         run: ls -la
-
-      - name: Intentional Error
-        run: exit 1
 
       - name: Print runner OS
         run: 'echo "Runner OS: ${{runner.os}}"'
