@@ -20,4 +20,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Print Python version
-        run: echo "Python version: $(python --version)"
+        run: python --version
