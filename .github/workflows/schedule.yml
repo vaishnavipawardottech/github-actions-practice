@@ -1,0 +1,18 @@
+# Goal: This workflow is triggered on a schedule to perform routine tasks.
+
+name: Scheduled Workflow
+
+# Runs every day at midnight UTC
+on:
+  schedule:
+    # - cron: '0 0 * * *' 
+    # Every monday at 9 AM UTC
+    # - cron: '0 9 * * 1'
+
+jobs:
+  scheduled-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Scheduled message
+        run: 'echo "This workflow was triggered by a schedule."'
