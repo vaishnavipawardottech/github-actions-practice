@@ -1,0 +1,23 @@
+# Goal: Matrix build workflow that installs different versions of python and print version.
+
+name: Matrix Build
+
+on: 
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.10, 3.11, 3.12]
+    
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Print Python version
+        run: echo "Python version: $(python --version)"
