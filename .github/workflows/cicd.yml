@@ -1,7 +1,7 @@
 name: CICD Demo
 
 on: 
-  push:
+  pull_request:
 
 jobs:
   code:
