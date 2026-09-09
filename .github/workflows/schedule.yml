@@ -4,10 +4,13 @@ name: Scheduled Workflow
 
 # Runs every day at midnight UTC
 on:
-  schedule:
+  # schedule:
     # - cron: '0 0 * * *' 
     # Every monday at 9 AM UTC
     # - cron: '0 9 * * 1'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   scheduled-job:
