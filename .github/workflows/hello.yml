@@ -19,7 +19,7 @@ jobs:
       - name: print branch name
         run: 'echo "Branch: ${{ github.ref_name }}"'
 
-      - name: List files
+      -name: List files
         run: ls -la
 
       - name: Print runner OS
