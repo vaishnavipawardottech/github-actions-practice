@@ -3,7 +3,8 @@
 name: Matrix Build
 
 on: 
-  push:
+  # push:
+  workflow_dispatch:
 
 jobs:
   test:

@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "OS: ${{ runner.os }}"
           echo "Hostname: ${{ runner.hostname }}"
-          echo "User: ${{ whoami }}"
+          echo "User: $( whoami )"
 
   windows:
     runs-on: windows-latest
@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "OS: ${{  runner.os }}"
           echo "Hostname: ${{ runner.hostname }}"
-          echo "User: ${{ whoami }}"
+          echo "User: $( whoami )"
 
   macos:
     runs-on: macos-latest
@@ -35,4 +35,4 @@ jobs:
         run: |
           echo "OS: ${{ runner.os }}"
           echo "Hostname: ${{ runner.hostname }}"
-          echo "User: ${{ whoami }}"
+          echo "User: $( whoami )"
