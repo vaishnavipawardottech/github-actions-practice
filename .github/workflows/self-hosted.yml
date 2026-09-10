@@ -1,0 +1,25 @@
+# GOAL: Print hostname, WORKDIR, create a file and use self hosted runner for this workflow.
+
+name: Self Hosted Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  self-hosted-job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Print hostname
+        run: echo "Hostname: $(hostname)"
+
+      - name: Print working directory
+        run: echo "Working directory: $(pwd)"
+
+      - name: Create a file
+        run: echo "This is a test file created by the self-hosted runner." > test_file.txt
+
+      - name: Verify file 
+        run: |
+          ls -l test_file.txt
+          cat test_file.txt
