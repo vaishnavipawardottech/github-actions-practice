@@ -1,0 +1,38 @@
+# Goal: workflow with 3 jobs that run on different OS
+
+name: Github hosted runners
+
+on: 
+  workflow_dispatch:
+
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show Ubuntu runner information
+        run: |
+          echo "OS: ${{ runner.os }}"
+          echo "Hostname: ${{ runner.hostname }}"
+          echo "User: ${{ whoami }}"
+
+  windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Show windows runner information
+        run: |
+          echo "OS: ${{  runner.os }}"
+          echo "Hostname: ${{ runner.hostname }}"
+          echo "User: ${{ whoami }}"
+
+  macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: show macOS runner information
+        run: |
+          echo "OS: ${{ runner.os }}"
+          echo "Hostname: ${{ runner.hostname }}"
+          echo "User: ${{ whoami }}"
