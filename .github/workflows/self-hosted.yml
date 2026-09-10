@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: Print hostname
-        run: "echo "Hostname: $(hostname)""
+        run: 'echo "Hostname: $(hostname)"'
 
       - name: Print working directory
-        run: "echo "Working directory: $(pwd)""
+        run: 'echo "Working directory: $(pwd)"'
 
       - name: Create a file
-        run: "echo "This is a test file created by the self-hosted runner." > test_file.txt"
+        run: 'echo "This is a test file created by the self-hosted runner." > test_file.txt'
 
       - name: Verify file 
         run: |
