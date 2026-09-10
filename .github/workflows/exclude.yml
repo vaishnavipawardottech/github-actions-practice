@@ -3,7 +3,9 @@
 name: Matrix Build
 
 on: 
-  push:
+  # push:
+  # I dont want this task to run on push, so I will comment it out and use pull_request instead.
+  pull_request:
 
 jobs:
   test:
