@@ -1,0 +1,25 @@
+# GOAL: write workflow to explore pre-installed software on the runner.
+
+name: Explore pre-installed software
+
+on:
+  workflow_dispatch:
+
+jobs:
+  explore:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Explore pre-installed software
+        run: |
+          echo "Docker version:"
+          docker --version
+
+          echo "Python version:"
+          python --version
+
+          echo "Node version:"
+          node --version
+
+          echo "Git version:"
+          git --version
