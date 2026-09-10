@@ -14,7 +14,7 @@ jobs:
       - name: Show Ubuntu runner information
         run: |
           echo "OS: ${{ runner.os }}"
-          echo "Hostname: ${{ runner.hostname }}"
+          echo "Hostname: $(hostname)"
           echo "User: $( whoami )"
 
   windows:
@@ -24,8 +24,8 @@ jobs:
       - name: Show windows runner information
         run: |
           echo "OS: ${{  runner.os }}"
-          echo "Hostname: ${{ runner.hostname }}"
-          echo "User: $( whoami )"
+          echo "Hostname: $env:COMPUTERNAME"
+          echo "User: $env:USERNAME"
 
   macos:
     runs-on: macos-latest
@@ -34,5 +34,5 @@ jobs:
       - name: show macOS runner information
         run: |
           echo "OS: ${{ runner.os }}"
-          echo "Hostname: ${{ runner.hostname }}"
+          echo "Hostname: $(hostname)"
           echo "User: $( whoami )"
