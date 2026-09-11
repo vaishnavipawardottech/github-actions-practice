@@ -1,0 +1,26 @@
+# GOAL: create env variables in workflow, job and step level
+
+name: env-vars
+
+on:
+    workflow_dispatch:
+
+env:
+    APP_NAME: "MyApp"
+
+jobs:
+    show-vars:
+        runs-on: ubuntu-latest
+
+        env:
+            ENVIRONMENT: "Staging"
+
+        steps:
+            - name: show environment variables
+              env:
+                VERSION: 1.0.0
+              run: |
+                echo "App Name: $APP_NAME"
+                echo "Environment: $ENVIRONMENT"
+                echo "Version: $VERSION"
+
