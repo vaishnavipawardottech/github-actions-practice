@@ -1,0 +1,35 @@
+# GOAL: downloads artifacts between the jobs
+
+name: Artifact between jobs
+
+on:
+    workflow_dispatch:
+
+jobs:
+    create-artifact:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: create file
+              run: |
+                echo "Hello from job 1" > output.txt
+                echo "This file was passed to job 2" >> output.txt
+
+            - name: upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: job-output
+                path: output.txt
+
+    use-artifact:
+        needs: create-artifact
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: download artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: job-output
+
+            - name: print artifact content
+              run: cat output.txt
