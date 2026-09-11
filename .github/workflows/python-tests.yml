@@ -1,0 +1,25 @@
+# GOAL: run real test in ci
+
+name: run-python-tests
+
+on:
+    workflow_dispatch:
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: set up python
+              uses: actions/setup-python@v6
+              with:
+                python-version: 3.11
+
+            - name: check python version
+              run: python --version
+
+            - name: Run python test
+              run: python test.py
