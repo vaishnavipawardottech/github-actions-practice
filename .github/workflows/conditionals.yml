@@ -3,8 +3,8 @@
 name: Conditionals
 
 on:
-    push:
-    pull_request:
+    # push:
+    # pull_request:
     workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
 
             - name: Run after previous step fails
               if: failure()
-              run: echo "The previousl step failed, so this step is running"
+              run: echo "The previous step failed, so this step is running"
 
     continue-on-error-job:
         runs-on: ubuntu-latest

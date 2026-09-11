@@ -1,0 +1,38 @@
+# GOAL: 1.Triggers on push to any branch 2.create 3 jobs: lint, test, summary 3.for summary job prints whether push is from main or feature branch
+
+name: smart-pipeline
+
+on:
+    push:
+
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: run lint
+              run: echo "Running linting"
+
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: run tests
+              run: echo "Running tests"
+
+    summary:
+        needs: [lint, test]
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: show branch type
+              run: |
+                if [ "${{github.ref}}" == "refs/heads/main" ]; then
+                  echo "This is main branch push"
+                else
+                  echo "This is feature branch push"
+                fi
+
+            - name: show commit message
+              run: 'echo "Commit message: ${{ github.event.commits[0].message }}"'
