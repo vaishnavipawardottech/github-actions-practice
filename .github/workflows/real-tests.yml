@@ -1,0 +1,17 @@
+# GOAL: run real test in ci
+
+name: real-tests
+
+on:
+    workflow_dispatch:
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Run test script
+              run: ./test.sh
