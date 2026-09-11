@@ -1,0 +1,43 @@
+# GOAL: practice conditionals
+
+name: Conditionals
+
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    conditional-steps:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Run only on main branch
+              if: github.ref == 'refs/heads/main'
+              run: echo "This step runs only on the main branch"
+
+            - name: Intentionally fail
+              run: exit 1
+
+            - name: Run after previous step fails
+              if: failure()
+              run: echo "The previousl step failed, so this step is running"
+
+            - name: continue even if this step fails
+              continue-on-error: true
+              run: |
+                echo "This step will fail, but the job will continue"
+                exit 1
+
+            - name: step after allowed failure
+              run: echo "This job continues even after the previous step failed"
+
+    
+    push-only:
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: push only jobs
+              run: echo "This job runs only for push events"
+
