@@ -1,0 +1,27 @@
+# GOAL: using 1 job's output in another job
+
+name: job outputs
+
+on:
+    workflow_dispatch:
+
+jobs:
+    generate-date:
+        runs-on: ubuntu-latest
+
+        outputs:
+            date: ${{ steps.get-date.outputs.date }}
+
+        steps:
+            - name: Generate Date
+              id: get-date
+              run: echo "date=$(date)" >> $GITHUB_OUTPUT
+
+    
+    use-date:
+        needs: generate-date
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Print date
+              run: 'echo "Date from previous job: ${{ needs.generate-date.outputs.date }}"'
