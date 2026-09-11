@@ -1,0 +1,28 @@
+# GOAL: print build, test and deploy with dependency on each other
+
+name: multi-job
+
+on: 
+    workflow_dispatch:
+
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Build
+            run: echo "Building the app"
+
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test
+              run: echo "Running tests"
+
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy
+              run: echo "Deploying"
