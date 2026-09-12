@@ -1,0 +1,28 @@
+# GOAL: composite action test
+
+name: Composite Action Test
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    greet:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+
+            - name: run custom greeting action
+              id: greeting
+              uses: ./.github/actions/greeting-action
+              with:
+                name: "Vaishnavi"
+                language: "en"
+
+            - name: check greeting output
+              run: |
+                echo "Greeting message: ${{ steps.greeting.outputs.greeted}}"
