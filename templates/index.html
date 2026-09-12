@@ -1,458 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Engineer | Portfolio</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
-            line-height: 1.6;
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: #0f172a;
-            border-bottom: 1px solid #1e293b;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: #38bdf8;
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 28px;
-        }
-
-        nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-
-        nav a:hover {
-            color: #38bdf8;
-        }
-
-        section {
-            max-width: 1000px;
-            margin: auto;
-            padding: 90px 8%;
-        }
-
-        #about {
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .tag {
-            color: #38bdf8;
-            font-size: 0.95rem;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            line-height: 1.05;
-            color: #f8fafc;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #f8fafc;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .intro {
-            max-width: 650px;
-            color: #94a3b8;
-            font-size: 1.05rem;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 28px;
-            padding: 11px 20px;
-            border: 1px solid #38bdf8;
-            border-radius: 6px;
-            color: #38bdf8;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background: #38bdf8;
-            color: #0f172a;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 14px;
-        }
-
-        .skill {
-            background: #111c32;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
-            padding: 18px;
-            text-align: center;
-            color: #cbd5e1;
-        }
-
-        .skill:hover {
-            border-color: #38bdf8;
-            transform: translateY(-2px);
-            transition: 0.2s ease;
-        }
-
-        .experience-card {
-            background: #111c32;
-            border-left: 3px solid #38bdf8;
-            padding: 24px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .experience-card h3 {
-            color: #f8fafc;
-            margin-bottom: 6px;
-        }
-
-        .experience-card .date {
-            color: #38bdf8;
-            font-size: 0.9rem;
-            margin-bottom: 14px;
-        }
-
-        .experience-card p {
-            color: #94a3b8;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .contact-info > p {
-            color: #94a3b8;
-            margin-bottom: 28px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 22px;
-        }
-
-        .contact-icon {
-            width: 45px;
-            height: 45px;
-            min-width: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
-            color: #38bdf8;
-            background: #111c32;
-        }
-
-        .contact-icon svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .contact-item span {
-            display: block;
-            color: #64748b;
-            font-size: 0.8rem;
-            margin-bottom: 2px;
-        }
-
-        .contact-item a {
-            color: #cbd5e1;
-            text-decoration: none;
-            word-break: break-word;
-        }
-
-        .contact-item a:hover {
-            color: #38bdf8;
-        }
-
-        .contact-form {
-            background: #111c32;
-            border: 1px solid #1e293b;
-            border-radius: 10px;
-            padding: 28px;
-        }
-
-        .contact-form h3 {
-            color: #f8fafc;
-            margin-bottom: 22px;
-            font-size: 1.3rem;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #cbd5e1;
-            font-size: 0.9rem;
-            margin-bottom: 7px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #334155;
-            border-radius: 6px;
-            background: #0f172a;
-            color: #e2e8f0;
-            font: inherit;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #38bdf8;
-        }
-
-        .form-group textarea {
-            min-height: 130px;
-            resize: vertical;
-        }
-
-        .send-btn {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #38bdf8;
-            border-radius: 6px;
-            background: transparent;
-            color: #38bdf8;
-            font: inherit;
-            cursor: pointer;
-        }
-
-        .send-btn:hover {
-            background: #38bdf8;
-            color: #0f172a;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            border-top: 1px solid #1e293b;
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) {
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                gap: 14px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            section {
-                padding: 70px 7%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA — Modern E-Commerce Store</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #171717;
+      --muted: #6b6b6b;
+      --line: #e9e9e9;
+      --soft: #f6f5f2;
+      --accent: #ff5a36;
+      --white: #fff;
+    }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; border: 0; }
+    .topbar {
+      background: var(--ink);
+      color: white;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      height: 76px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -.06em;
+    }
+    .navlinks { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
+    .navlinks a:hover { color: var(--accent); }
+    .actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #f5f5f5; display: grid; place-items: center;
+      font-size: 17px;
+    }
+    .cart { position: relative; }
+    .cart span {
+      position: absolute; top: -2px; right: -2px;
+      background: var(--accent); color: #fff; width: 17px; height: 17px;
+      display: grid; place-items: center; border-radius: 50%; font-size: 10px;
+    }
+    .hero {
+      max-width: 1180px;
+      margin: 24px auto 0;
+      padding: 0 22px;
+    }
+    .hero-card {
+      min-height: 500px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 60px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.68), rgba(0,0,0,.10)),
+        url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+      color: white;
+    }
+    .hero-content { max-width: 560px; }
+    .eyebrow {
+      font-size: 12px; font-weight: 800; letter-spacing: .16em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      margin-bottom: 22px;
+    }
+    .hero p { max-width: 460px; color: #eee; font-size: 16px; margin-bottom: 30px; }
+    .primary {
+      background: white; color: var(--ink);
+      padding: 14px 22px; border-radius: 999px; font-weight: 800;
+      transition: transform .2s, background .2s;
+    }
+    .primary:hover { transform: translateY(-2px); background: #f1f1f1; }
+    .section {
+      max-width: 1180px; margin: 78px auto 0; padding: 0 22px;
+    }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: end;
+      margin-bottom: 24px; gap: 20px;
+    }
+    .section-head h2 { font-size: 32px; letter-spacing: -.04em; }
+    .section-head p { color: var(--muted); font-size: 14px; }
+    .categories {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .category {
+      min-height: 170px; border-radius: 18px; overflow: hidden;
+      position: relative; color: #fff;
+      background-size: cover; background-position: center;
+      display: flex; align-items: end; padding: 20px;
+      isolation: isolate;
+    }
+    .category::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.72)); z-index: -1;
+    }
+    .category h3 { font-size: 20px; }
+    .products {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    }
+    .product-card { min-width: 0; }
+    .product-img {
+      aspect-ratio: 1 / 1.12; border-radius: 18px; overflow: hidden;
+      background: var(--soft); position: relative;
+    }
+    .product-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .product-card:hover img { transform: scale(1.05); }
+    .badge {
+      position: absolute; top: 12px; left: 12px;
+      background: white; border-radius: 999px; padding: 6px 10px;
+      font-size: 11px; font-weight: 800;
+    }
+    .product-info { padding: 14px 2px; }
+    .product-info h3 { font-size: 15px; margin-bottom: 4px; }
+    .product-info p { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+    .price { font-weight: 900; }
+    .old { color: #aaa; text-decoration: line-through; margin-left: 5px; font-weight: 500; }
+    .banner {
+      margin-top: 80px; border-radius: 24px; overflow: hidden;
+      min-height: 330px; display: flex; align-items: center;
+      padding: 50px;
+      background:
+        linear-gradient(90deg, rgba(18,18,18,.82), rgba(18,18,18,.18)),
+        url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+      color: white;
+    }
+    .banner-content { max-width: 500px; }
+    .banner h2 { font-size: 42px; line-height: 1; letter-spacing: -.05em; margin-bottom: 14px; }
+    .banner p { color: #ddd; margin-bottom: 22px; }
+    footer {
+      margin-top: 80px; background: #111; color: white;
+      padding: 50px 22px;
+    }
+    .footer-inner {
+      max-width: 1180px; margin: auto;
+      display: flex; justify-content: space-between; gap: 40px;
+    }
+    footer p { color: #999; font-size: 13px; max-width: 350px; margin-top: 10px; }
+    .footer-links { display: flex; gap: 32px; color: #bbb; font-size: 13px; }
+    @media (max-width: 850px) {
+      .navlinks { display: none; }
+      .hero-card { min-height: 470px; padding: 36px; }
+      .categories, .products { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .hero-card { min-height: 520px; padding: 28px; align-items: end; }
+      .categories, .products { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .section { margin-top: 54px; }
+      .section-head { display: block; }
+      .section-head h2 { margin-bottom: 5px; }
+      .banner { padding: 30px; }
+      .banner h2 { font-size: 34px; }
+      .footer-links { flex-wrap: wrap; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <nav>
-        <div class="logo">&lt;Vaishnavi Pawar /&gt;</div>
+  <div class="topbar">Free shipping on orders over ₹1,999 · Easy 7-day returns</div>
 
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#">NOVA.</a>
+      <div class="navlinks">
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#sale">Sale</a>
+      </div>
+      <div class="actions">
+        <button class="icon-btn" aria-label="Search">⌕</button>
+        <button class="icon-btn" aria-label="Account">♙</button>
+        <button class="icon-btn cart" aria-label="Cart">🛒<span>2</span></button>
+      </div>
     </nav>
+  </header>
 
-    <main>
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="eyebrow">New season · 2026</div>
+          <h1>Style that feels like you.</h1>
+          <p>Discover thoughtfully selected fashion, accessories and everyday essentials made for modern living.</p>
+          <a class="primary" href="#shop">Shop collection →</a>
+        </div>
+      </div>
+    </section>
 
-        <section id="about">
-            <div class="tag">DEVOPS ENGINEER</div>
-            <h1>Hi, I'm Vaishnavi.</h1>
-            <p class="intro">
-                I build, automate, and manage reliable software environments.
-                I have hands-on knowledge of Linux, containerization, CI/CD,
-                cloud platforms, and DevOps tools.
-            </p>
-            <a class="btn" href="#contact">Get In Touch</a>
-        </section>
+    <section class="section" id="categories">
+      <div class="section-head">
+        <div>
+          <h2>Shop by category</h2>
+          <p>Find something you'll love.</p>
+        </div>
+      </div>
+      <div class="categories">
+        <a class="category" style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80')" href="#shop"><h3>Women</h3></a>
+        <a class="category" style="background-image:url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80')" href="#shop"><h3>Men</h3></a>
+        <a class="category" style="background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80')" href="#shop"><h3>Sneakers</h3></a>
+        <a class="category" style="background-image:url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=80')" href="#shop"><h3>Accessories</h3></a>
+      </div>
+    </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
+    <section class="section" id="shop">
+      <div class="section-head">
+        <div>
+          <h2>Trending now</h2>
+          <p>Our most-loved picks this week.</p>
+        </div>
+        <a href="#" style="font-size:14px;font-weight:800;">View all →</a>
+      </div>
 
-            <div class="skills">
-                <div class="skill">Linux</div>
-                <div class="skill">Shell Scripting</div>
-                <div class="skill">Git</div>
-                <div class="skill">GitHub</div>
-                <div class="skill">Docker</div>
-                <div class="skill">GitHub Actions</div>
-                <div class="skill">Jenkins</div>
-                <div class="skill">Kubernetes</div>
-                <div class="skill">CI/CD</div>
-                <div class="skill">AWS</div>
-            </div>
-        </section>
+      <div class="products">
+        <article class="product-card">
+          <div class="product-img">
+            <span class="badge">BESTSELLER</span>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="White basic t-shirt">
+          </div>
+          <div class="product-info">
+            <h3>Essential Cotton Tee</h3><p>Soft everyday essential</p>
+            <div class="price">₹799 <span class="old">₹999</span></div>
+          </div>
+        </article>
 
-        <section id="experience">
-            <h2>Experience</h2>
+        <article class="product-card">
+          <div class="product-img">
+            <span class="badge">NEW</span>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80" alt="Blue denim jeans">
+          </div>
+          <div class="product-info">
+            <h3>Classic Straight Denim</h3><p>Relaxed fit · Blue wash</p>
+            <div class="price">₹1,899</div>
+          </div>
+        </article>
 
-            <div class="experience-card">
-                <h3>DevOps / Software Engineering Experience</h3>
-                <div class="date">Hands-on Projects & Learning</div>
-                <p>
-                    Worked with Linux, Git and GitHub, Docker, GitHub Actions,
-                    CI/CD workflows, and AWS. Built and containerized applications,
-                    worked with Docker Compose, and practiced automation and
-                    deployment concepts across the DevOps lifecycle.
-                </p>
-            </div>
-        </section>
+        <article class="product-card">
+          <div class="product-img">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Red sneakers">
+          </div>
+          <div class="product-info">
+            <h3>Street Runner Sneakers</h3><p>Lightweight daily sneakers</p>
+            <div class="price">₹2,499 <span class="old">₹2,999</span></div>
+          </div>
+        </article>
 
-        <section id="contact">
-            <h2>Contact</h2>
+        <article class="product-card">
+          <div class="product-img">
+            <span class="badge">LIMITED</span>
+            <img loading="lazy" src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80" alt="Minimal wrist watch">
+          </div>
+          <div class="product-info">
+            <h3>Minimal Steel Watch</h3><p>Clean design · Everyday wear</p>
+            <div class="price">₹3,299</div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p>Interested in working together or discussing DevOps? Feel free to reach out.</p>
+    <section class="section" id="sale">
+      <div class="banner">
+        <div class="banner-content">
+          <div class="eyebrow">Weekend edit</div>
+          <h2>Up to 40% off selected styles.</h2>
+          <p>Refresh your wardrobe with limited-time prices on customer favourites.</p>
+          <a class="primary" href="#shop">Explore sale →</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                                <polyline points="3,7 12,13 21,7"></polyline>
-                            </svg>
-                        </div>
-                        <div>
-                            <span>Email</span>
-                            <a href="mailto:pawarvaishnavi.3010@gmail.com">pawarvaishnavi.3010@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <span>GitHub</span>
-                            <a href="#" target="_blank">https://github.com/vaishnavipawardottech</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                                <line x1="8" y1="11" x2="8" y2="16"></line>
-                                <line x1="8" y1="8" x2="8" y2="8"></line>
-                                <path d="M12 16v-5"></path>
-                                <path d="M12 13a3 3 0 0 1 6 0v3"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <span>LinkedIn</span>
-                            <a href="#" target="_blank">https://www.linkedin.com/in/vaishnavi-pawar-76a620260/</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item"> 
-                      <div class="contact-icon"> 
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
-                              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path> 
-                              <circle cx="12" cy="10" r="3"></circle> 
-                          </svg> 
-                      </div> 
-                      <div> 
-                          <span>Location</span> 
-                          <p style="color: #cbd5e1;">Pune, Maharashtra, India</p> 
-                      </div> 
-                  </div>
-                </div>
-
-                <form class="contact-form" action="#" method="post">
-                    <!-- <h3>Send Me a Message</h3> -->
-
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
-
-                    <!-- <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
-                    </div> -->
-
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="send-btn">Send Message</button>
-                </form>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        &copy; 2026 Vaishnavi. Built with Love.
-    </footer>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="logo">NOVA.</div>
+        <p>A simple modern storefront concept. Replace the demo content with your own products, prices and brand.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
