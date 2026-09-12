@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #38bdf8;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 90px 8%;
+        }
+
+        #about {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tag {
+            color: #38bdf8;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.05;
+            color: #f8fafc;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #f8fafc;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            max-width: 650px;
+            color: #94a3b8;
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 11px 20px;
+            border: 1px solid #38bdf8;
+            border-radius: 6px;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+        }
+
+        .skill {
+            background: #111c32;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            color: #cbd5e1;
+        }
+
+        .skill:hover {
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+            transition: 0.2s ease;
+        }
+
+        .experience-card {
+            background: #111c32;
+            border-left: 3px solid #38bdf8;
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .experience-card h3 {
+            color: #f8fafc;
+            margin-bottom: 6px;
+        }
+
+        .experience-card .date {
+            color: #38bdf8;
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+        }
+
+        .experience-card p {
+            color: #94a3b8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info > p {
+            color: #94a3b8;
+            margin-bottom: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            color: #38bdf8;
+            background: #111c32;
+        }
+
+        .contact-icon svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .contact-item span {
+            display: block;
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-bottom: 2px;
+        }
+
+        .contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: #38bdf8;
+        }
+
+        .contact-form {
+            background: #111c32;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 28px;
+        }
+
+        .contact-form h3 {
+            color: #f8fafc;
+            margin-bottom: 22px;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            background: #0f172a;
+            color: #e2e8f0;
+            font: inherit;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #38bdf8;
+            border-radius: 6px;
+            background: transparent;
+            color: #38bdf8;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .send-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 14px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            section {
+                padding: 70px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">&lt;Vaishnavi Pawar /&gt;</div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="about">
+            <div class="tag">DEVOPS ENGINEER</div>
+            <h1>Hi, I'm Vaishnavi.</h1>
+            <p class="intro">
+                I build, automate, and manage reliable software environments.
+                I have hands-on knowledge of Linux, containerization, CI/CD,
+                cloud platforms, and DevOps tools.
+            </p>
+            <a class="btn" href="#contact">Get In Touch</a>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+
+            <div class="skills">
+                <div class="skill">Linux</div>
+                <div class="skill">Shell Scripting</div>
+                <div class="skill">Git</div>
+                <div class="skill">GitHub</div>
+                <div class="skill">Docker</div>
+                <div class="skill">GitHub Actions</div>
+                <div class="skill">Jenkins</div>
+                <div class="skill">Kubernetes</div>
+                <div class="skill">CI/CD</div>
+                <div class="skill">AWS</div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="experience-card">
+                <h3>DevOps / Software Engineering Experience</h3>
+                <div class="date">Hands-on Projects & Learning</div>
+                <p>
+                    Worked with Linux, Git and GitHub, Docker, GitHub Actions,
+                    CI/CD workflows, and AWS. Built and containerized applications,
+                    worked with Docker Compose, and practiced automation and
+                    deployment concepts across the DevOps lifecycle.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>Interested in working together or discussing DevOps? Feel free to reach out.</p>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <polyline points="3,7 12,13 21,7"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <span>Email</span>
+                            <a href="mailto:pawarvaishnavi.3010@gmail.com">pawarvaishnavi.3010@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span>GitHub</span>
+                            <a href="#" target="_blank">https://github.com/vaishnavipawardottech</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <line x1="8" y1="11" x2="8" y2="16"></line>
+                                <line x1="8" y1="8" x2="8" y2="8"></line>
+                                <path d="M12 16v-5"></path>
+                                <path d="M12 13a3 3 0 0 1 6 0v3"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span>LinkedIn</span>
+                            <a href="#" target="_blank">https://www.linkedin.com/in/vaishnavi-pawar-76a620260/</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item"> 
+                      <div class="contact-icon"> 
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+                              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path> 
+                              <circle cx="12" cy="10" r="3"></circle> 
+                          </svg> 
+                      </div> 
+                      <div> 
+                          <span>Location</span> 
+                          <p style="color: #cbd5e1;">Pune, Maharashtra, India</p> 
+                      </div> 
+                  </div>
+                </div>
+
+                <form class="contact-form" action="#" method="post">
+                    <!-- <h3>Send Me a Message</h3> -->
+
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="send-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Vaishnavi. Built with Love.
+    </footer>
+
+</body>
+</html>
