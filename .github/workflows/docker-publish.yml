@@ -35,6 +35,8 @@ jobs:
               uses: docker/build-push-action@v7
               with:
                 push: true
-                tags: "${{ vars.DOCKER_USERNAME }}/github-actions-practice-ecommerce:latest"
+                tags: |
+                    "${{ vars.DOCKER_USERNAME }}/github-actions-practice-ecommerce:latest"
+                    "${{ vars.DOCKER_USERNAME }}/github-actions-practice-ecommerce:sha-${{ github.sha }}"
 
 
