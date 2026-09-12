@@ -18,7 +18,7 @@ jobs:
 
             - name: run custom greeting action
               id: greeting
-              uses: ./.github/actions/setup-and-greet/action.yml
+              uses: ./.github/actions/setup-and-greet
               with:
                 name: "Vaishnavi"
                 language: "en"
