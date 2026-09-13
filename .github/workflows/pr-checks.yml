@@ -1,6 +1,6 @@
 # GOAL: create Pull request validation workflow
 
-name: PR check
+name: PR validation
 
 on:
     pull_request:
@@ -39,7 +39,7 @@ jobs:
 
                 echo "Branch: $BRANCH"
 
-                if [[ "$BRANCH" == feature/* || "$BRANCH" == fix/* || "$BRANCH" == docs/* ]] then
+                if [[ "$BRANCH" == feature/* || "$BRANCH" == fix/* || "$BRANCH" == docs/* ]]; then
                     echo "Branch name is valid."
                 else
                     echo "Invalid branch name."
@@ -57,7 +57,7 @@ jobs:
                 PR_BODY: ${{ github.event.pull_request.body }}
             
               run: |
-                if [-z "$PR_BODY"]; then
+                if [ -z "$PR_BODY" ]; then
                     echo "Warning: PR description is empty. Please provide a description for the PR."
                 else
                     echo "PR description is present."
