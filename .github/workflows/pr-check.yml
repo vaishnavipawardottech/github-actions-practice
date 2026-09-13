@@ -3,12 +3,12 @@
 name: PR check
 
 on:
-  pull_request:
-    branches:
-      - main
-    types:
-      - opened
-      - synchronize
+  # pull_request:
+  #   branches:
+  #     - main
+
+  workflow_dispatch:
+
 
 jobs:
   pr-check:
