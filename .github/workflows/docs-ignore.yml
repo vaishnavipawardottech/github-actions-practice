@@ -3,13 +3,13 @@
 name: Ignore Docs Changes
 
 on:
-    push:
-        branches:
-            - main
-            - 'release/**'
-        paths-ignore:
-            - '*.md'
-            - 'docs/**'
+    # push:
+    #     branches:
+    #         - main
+    #         - 'release/**'
+    #     paths-ignore:
+    #         - '*.md'
+    #         - 'docs/**'
     workflow_dispatch:
 
 jobs:

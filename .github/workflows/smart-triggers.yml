@@ -3,13 +3,13 @@
 name: Smart Triggers
 
 on:
-    push:
-        branches:
-            - main
-            - 'release/**'
-        paths:
-            - 'src/**'
-            - 'app/**'
+    # push:
+    #     branches:
+    #         - main
+    #         - 'release/**'
+    #     paths:
+    #         - 'src/**'
+    #         - 'app/**'
     workflow_dispatch:
 
 jobs:
