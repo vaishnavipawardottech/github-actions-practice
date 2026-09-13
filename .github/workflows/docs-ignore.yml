@@ -1,0 +1,22 @@
+# GOAL: ignore docs changes
+
+name: Ignore Docs Changes
+
+on:
+    push:
+        branches:
+            - main
+            - 'release/**'
+        paths-ignore:
+            - '*.md'
+            - 'docs/**'
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Run build
+              run: |
+                echo "build triggered because non-docs files changed."
