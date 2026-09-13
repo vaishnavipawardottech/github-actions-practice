@@ -1,0 +1,23 @@
+# GOAL: Path and branch filters
+
+name: Smart Triggers
+
+on:
+    push:
+        branches:
+            - main
+            - 'release/**'
+        paths:
+            - 'src/**'
+            - 'app/**'
+    workflow_dispatch:
+
+jobs:
+    smart-build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Show trigger
+              run: |
+                echo "Workflow triggered because src/ or app/ changed."
+                echo "Branch: ${{ github.ref }}"
