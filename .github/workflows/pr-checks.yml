@@ -1,0 +1,64 @@
+# GOAL: create Pull request validation workflow
+
+name: PR check
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    file-size-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+
+            - name: check file sizes
+              run: |
+                echo "checking files larger than 1 MB"
+
+                large_files=$(find . -type f -not -path './.git/*' -size +1M)
+
+                if [ -n "$large_files" ]; then
+                    echo "Files larger than 1 MB found:"
+                    echo "$large_files"
+                    exit 1
+                else
+                    echo "All files are within the 1MB limit."
+                fi
+
+    branch-name-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check branch name
+              run: |
+                BRANCH="${{ github.head_ref }}"
+
+                echo "Branch: $BRANCH"
+
+                if [[ "$BRANCH" == feature/* || "$BRANCH" == fix/* || "$BRANCH" == docs/* ]] then
+                    echo "Branch name is valid."
+                else
+                    echo "Invalid branch name."
+                    echo "use 'feature/', 'fix/', or 'docs/' as prefix."
+                    exit 1
+                fi
+
+    
+    pr-body-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: check PR description
+              env:
+                PR_BODY: ${{ github.event.pull_request.body }}
+            
+              run: |
+                if [-z "$PR_BODY"]; then
+                    echo "Warning: PR description is empty. Please provide a description for the PR."
+                else
+                    echo "PR description is present."
+                fi
